@@ -1,0 +1,31 @@
+/* 
+'fnc_simpleobject' by Madopow2110
+
+Takes selected objects out of cached status
+
+0 = list of classnames (TYPE = ARRAY)
+
+USAGE: 
+
+_handle = [["class1","class2","class3"]] call fnc_simpleobject;
+*/
+
+_list = _this select 0;
+
+{
+
+  if ((typeOf _x) in _list) then {
+
+    _Object = _x;
+    _position = getPosWorld _Object;
+    _vectorDirUp = [vectorDir _Object, vectorUp _Object];
+    _model = getModelInfo _Object select 1;
+    deleteVehicle _Object;
+    _simpleObject = createSimpleObject [_model, _position];
+    _simpleObject setVectorDirAndUp _vectorDirUp;
+
+  };
+
+} foreach AllUnits;
+
+
