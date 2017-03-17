@@ -1,5 +1,5 @@
 /* 
-'fnc_cache_enableList' by Madopow2110
+'fnc_cache_enableList' by shifty_ginosaji
 
 Takes selected objects out of cached status
 
@@ -21,5 +21,6 @@ _list = _this select 0;
     _x enableAI "MOVE";
     _x enableAI "ANIM";
     _x enableAI "FSM";
+	_x setVariable ["sg_cache",[false,_list],false];
 
 } foreach _list;
