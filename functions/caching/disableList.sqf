@@ -15,25 +15,18 @@ _list = _this select 0;
 _deleteList = _this select 1;
 
 {
-	if {_deleteList} then {
 	
-		deleteVehicle _x;
-	
-	}
-	else
-	{
-	
-		_x enableSimulationGlobal false;
-		_x setCaptive true;
-		_x hideObjectGlobal true;
-		_x disableAI "TARGET";
+	_x enableSimulationGlobal false;
+	_x setCaptive true;
+	_x hideObjectGlobal true;
+	_x disableAI "TARGET";
 		_x disableAI "AUTOTARGET";
-		_x disableAI "MOVE";
-		_x disableAI "ANIM";
-		_x disableAI "FSM";
-		_x setVariable ["sg_cache",[true,_list],false];
-		
-	};
+	_x disableAI "MOVE";
+	_x disableAI "ANIM";
+	_x disableAI "FSM";
+	_x setVariable ["sg_cache",[true,_list],false];	
 
 } foreach _list;
 
+if {_deleteList} exitWith {{deleteVehicle _x;} forEach _list};
+	
